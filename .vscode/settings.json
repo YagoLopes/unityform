@@ -1,0 +1,16 @@
+{
+  "typescript.tsserver.log": "verbose",
+  "javascript.suggest.autoImports": true,
+  "editor.formatOnSave": true,
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "typescript.suggest.autoImports": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
