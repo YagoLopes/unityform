@@ -7,7 +7,6 @@
   "license": "MIT",
   "scripts": {
     "version": "npm version",
-    "deploy": "npm publish --access=public",
     "build": "tsc -p .",
     "test": "jest --maxWorkers=3",
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
