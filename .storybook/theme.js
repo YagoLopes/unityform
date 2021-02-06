@@ -4,7 +4,7 @@ export default create({
   base: 'dark',
   // colorSecondary: '#FCA311',
   // appBg: '#ffff',
-  appContentBg: '#82816D',
+  appContentBg: '#8c8c8c',
   // appBorderColor: '#E5E5E5',
   // textColor: '#fff',
 
@@ -13,5 +13,5 @@ export default create({
   // barSelectedColor: '#fff',
   // barBg: '#fff',
   brandTitle: 'UnityForms',
-  // brandUrl: 'https://creditoexpress.com.br/',
+  brandUrl: 'https://github.com/YagoLopes/unityform',
 });

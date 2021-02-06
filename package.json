@@ -1,16 +1,19 @@
 {
-  "name": "@yagolopes/unityforms",
-  "version": "0.0.1",
+  "name": "@yagolopes/unityform",
+  "version": "1.0.0",
+  "description": "React form lib components",
   "main": "dist/index.js",
   "author": "Yago Lopes",
   "license": "MIT",
   "scripts": {
     "version": "npm version",
-    "deploy": "npm publish",
+    "deploy": "npm publish --access=public",
     "build": "tsc -p .",
     "test": "jest --maxWorkers=3",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o ./public"
+    "build-storybook": "build-storybook -o ./public",
+    "deploy-storybook": "gh-pages -d public"
   },
   "dependencies": {
     "@unform/core": "^2.1.3",
@@ -59,8 +62,18 @@
     "round-to": "^5.0.0",
     "styled-components": "^5.2.1",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "gh-pages": "^2.2.0",
+    "prettier": "^1.19.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yagolopes/unityform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yagolopes/unityform/issues"
+  },
+  "homepage": "https://yagolopes.github.io/unityform",
   "browserslist": {
     "production": [
       ">0.2%",

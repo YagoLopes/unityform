@@ -5,6 +5,7 @@ stories
 .storybook
 .eslintrc.json
 __tests__
+__mocks__
 jest.config.ts
 tsconfig.json
 .vscode
