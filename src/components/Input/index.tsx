@@ -4,22 +4,22 @@ import {
   Box,
   FormControl,
   FormHelperText,
-  InputLabel,
-  Input as Material,
-  InputProps,
+  TextField as Material,
+  TextFieldProps,
 } from '@material-ui/core';
 
 import { useField } from '@unform/core';
 
-export interface IInputProps extends InputProps {
+export interface IInputProps {
   name: string;
 }
 
-export const Input: React.FC<IInputProps> = ({
+export const Input: React.FC<IInputProps & TextFieldProps> = ({
   name,
   fullWidth,
   title,
   required,
+  variant,
   ...rest
 }) => {
   const inputRef = useRef(null);
@@ -36,12 +36,11 @@ export const Input: React.FC<IInputProps> = ({
   return (
     <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
       <FormControl error={!!error} fullWidth={fullWidth}>
-        <InputLabel htmlFor={fieldName}>
-          {title} {required && '*'}
-        </InputLabel>
-
         <Material
+          InputLabelProps={{ shrink: true }}
+          label={`${title}${required ? '*' : ''}`}
           name={fieldName}
+          variant="outlined"
           id={fieldName}
           error={!!error}
           inputRef={inputRef}

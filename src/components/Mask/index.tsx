@@ -5,19 +5,18 @@ import {
   Box,
   FormControl,
   FormHelperText,
-  InputLabel,
-  Input as Material,
-  InputProps,
+  TextField as Material,
+  TextFieldProps,
 } from '@material-ui/core';
 
 import { useField } from '@unform/core';
 
-export interface IMaskProps extends InputProps {
+export interface IMaskProps {
   name: string;
   mask: string;
 }
 
-export const Mask: React.FC<IMaskProps> = ({
+export const Mask: React.FC<IMaskProps & TextFieldProps> = ({
   name,
   fullWidth,
   title,
@@ -39,12 +38,11 @@ export const Mask: React.FC<IMaskProps> = ({
   return (
     <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
       <FormControl error={!!error} fullWidth={fullWidth}>
-        <InputLabel htmlFor="component-error">
-          {title} {required && '*'}
-        </InputLabel>
         <InputMask mask={mask} defaultValue={defaultValue}>
           {(inputProps: React.Component<Props>) => (
             <Material
+              InputLabelProps={{ shrink: true }}
+              label={`${title}${required ? '*' : ''}`}
               name={fieldName}
               id={fieldName}
               error={!!error}
