@@ -16,5 +16,6 @@ export const Default = Template.bind({});
 
 Default.args = {
   title: 'Example Toggle',
+  variant: 'outlined',
   name: 'name',
 };

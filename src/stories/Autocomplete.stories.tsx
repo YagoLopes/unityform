@@ -23,6 +23,7 @@ Default.args = {
     { label: 'A', value: 'a' },
     { label: 'B', value: 'b' },
   ],
+  variant: 'outlined',
   autoFocus: true,
   fullWidth: true,
 };

@@ -17,6 +17,7 @@ export const Default = Template.bind({});
 Default.args = {
   title: 'Example DatePicker',
   name: 'datePicker',
+  variant: 'outlined',
   autoFocus: true,
   fullWidth: true,
 };

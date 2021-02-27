@@ -154,6 +154,7 @@ export const Select: React.FC<ISelectProps> = ({
 
         <BaseSelect
           {...baseSelectProps}
+          variant={variant}
           native={native}
           defaultValue={defaultValue}
         >

@@ -10,6 +10,7 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 import { useField } from '@unform/core';
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 export interface IDatePickerProps {
   name: string;
@@ -19,6 +20,8 @@ export interface IDatePickerProps {
   disabled?: boolean;
   disableFuture?: boolean;
   defaultValue?: Date;
+  value?: MaterialUiPickersDate;
+  variant?: 'standard' | 'filled' | 'outlined';
 }
 
 export const DatePicker: React.FC<IDatePickerProps> = ({
@@ -29,6 +32,7 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
   disabled,
   disableFuture,
   defaultValue,
+  variant,
   ...rest
 }) => {
   const inputRef = useRef(null);
@@ -64,6 +68,7 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
             minDateMessage="Data menor que a data mínima"
             invalidDateMessage="Formato da data é inválido"
             maxDateMessage="Data maior que o permitido"
+            inputVariant={variant}
             {...rest}
           />
 

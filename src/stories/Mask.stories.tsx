@@ -18,6 +18,7 @@ Default.args = {
   title: 'Example Fone Mask',
   name: 'fone',
   mask: '(99) 9 9999-9999',
+  variant: 'outlined',
   autoFocus: true,
   fullWidth: true,
 };
