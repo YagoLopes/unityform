@@ -22,6 +22,7 @@ export const Mask: React.FC<IMaskProps & TextFieldProps> = ({
   title,
   required,
   mask,
+  disabled,
   ...rest
 }) => {
   const inputRef = useRef(null);
@@ -38,7 +39,7 @@ export const Mask: React.FC<IMaskProps & TextFieldProps> = ({
   return (
     <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
       <FormControl error={!!error} fullWidth={fullWidth}>
-        <InputMask mask={mask} defaultValue={defaultValue}>
+        <InputMask mask={mask} defaultValue={defaultValue} disabled={disabled}>
           {(inputProps: React.Component<Props>) => (
             <Material
               InputLabelProps={{ shrink: true }}
@@ -47,6 +48,7 @@ export const Mask: React.FC<IMaskProps & TextFieldProps> = ({
               id={fieldName}
               error={!!error}
               inputRef={inputRef}
+              disabled={disabled}
               {...rest}
               {...inputProps}
             />

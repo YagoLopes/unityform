@@ -21,4 +21,5 @@ Default.args = {
   variant: 'outlined',
   autoFocus: true,
   fullWidth: true,
+  disabled: true,
 };
