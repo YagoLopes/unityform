@@ -23,6 +23,7 @@ export const Mask: React.FC<IMaskProps & TextFieldProps> = ({
   required,
   mask,
   disabled,
+  variant,
   ...rest
 }) => {
   const inputRef = useRef(null);
@@ -49,6 +50,7 @@ export const Mask: React.FC<IMaskProps & TextFieldProps> = ({
               error={!!error}
               inputRef={inputRef}
               disabled={disabled}
+              variant={variant}
               {...rest}
               {...inputProps}
             />

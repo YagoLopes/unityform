@@ -40,9 +40,9 @@ export const Input: React.FC<IInputProps & TextFieldProps> = ({
           InputLabelProps={{ shrink: true }}
           label={`${title}${required ? '*' : ''}`}
           name={fieldName}
-          variant="outlined"
           id={fieldName}
           error={!!error}
+          variant={variant}
           inputRef={inputRef}
           defaultValue={defaultValue}
           {...rest}
