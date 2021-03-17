@@ -8,3 +8,4 @@ export { Autocomplete } from './Autocomplete';
 export { AutocompleteAsync } from './AutocompleteAsync';
 export { Checkbox } from './Checkbox';
 export { Toggle } from './Toggle';
+export { Options } from './Options';
