@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import {
-  Box,
   FormControl,
   FormHelperText,
   FormControlLabel,
@@ -26,13 +25,12 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
 }) => {
   const inputRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
-  const [checked, setChecked] = useState<Boolean>(defaultValue || false);
 
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      path: 'value',
+      path: 'checked',
     });
   }, [fieldName, registerField]);
 
@@ -42,8 +40,6 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
         control={
           <Material
             name={fieldName}
-            value={checked}
-            onChange={() => setChecked(prevState => !prevState)}
             inputRef={inputRef}
             defaultValue={defaultValue}
             {...rest}

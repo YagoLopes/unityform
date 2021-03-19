@@ -6,7 +6,7 @@ import {
   TextField,
   TextFieldProps,
 } from '@material-ui/core';
-import Material, { AutocompleteProps } from '@material-ui/lab/Autocomplete';
+import Material from '@material-ui/lab/Autocomplete';
 
 import { useField } from '@unform/core';
 
@@ -14,8 +14,7 @@ interface IOption {
   label: string;
   value: string | boolean | number;
 }
-export interface IAutocompleteProps
-  extends AutocompleteProps<IOption, false, false, false> {
+export interface IAutocompleteProps {
   name: string;
   fullWidth?: boolean;
   title?: string;

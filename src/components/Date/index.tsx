@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import brLocale from 'date-fns/locale/pt-BR';
 
-import { Box, FormControl, FormHelperText } from '@material-ui/core';
+import { FormControl } from '@material-ui/core';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
@@ -11,7 +11,7 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 import { useField } from '@unform/core';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-
+import { stringToDate } from '../../utils/date';
 export interface IDatePickerProps {
   name: string;
   fullWidth?: boolean;
@@ -42,8 +42,17 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: inputRef.current,
-      path: 'value',
+      ref: inputRef,
+      getValue: ref => {
+        const date = stringToDate(ref.current.value, 'dd/MM/yyyy', '/');
+        return date;
+      },
+      setValue: (ref, value) => {
+        ref.current.value = value;
+      },
+      clearValue: ref => {
+        ref.current.value = '';
+      },
     });
   }, [fieldName, registerField]);
 
@@ -69,8 +78,6 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
           inputVariant={variant}
           {...rest}
         />
-
-        {error && <FormHelperText>{error}</FormHelperText>}
       </FormControl>
     </MuiPickersUtilsProvider>
   );
