@@ -142,31 +142,29 @@ export const Select: React.FC<ISelectProps> = ({
     return isValidValue(valueProp) || !!isValidValue(inputValue);
   }, [native, multiple, inputValue, valueProp]);
   return (
-    <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
-      <FormControl error={!!error} fullWidth={fullWidth}>
-        <InputLabel
-          shrink={shrink}
-          {...{ 'data-testid': 'select-label' }}
-          htmlFor="component-error"
-        >
-          {title} {required && '*'}
-        </InputLabel>
+    <FormControl error={!!error} fullWidth={fullWidth}>
+      <InputLabel
+        shrink={shrink}
+        {...{ 'data-testid': 'select-label' }}
+        htmlFor="component-error"
+      >
+        {title} {required && '*'}
+      </InputLabel>
 
-        <BaseSelect
-          {...baseSelectProps}
-          variant={variant}
-          native={native}
-          defaultValue={defaultValue}
-        >
-          {options.map(({ value, label: l }) => (
-            <MenuItem key={value} value={value}>
-              {l}
-            </MenuItem>
-          ))}
-        </BaseSelect>
+      <BaseSelect
+        {...baseSelectProps}
+        variant={variant}
+        native={native}
+        defaultValue={defaultValue}
+      >
+        {options.map(({ value, label: l }) => (
+          <MenuItem key={value} value={value}>
+            {l}
+          </MenuItem>
+        ))}
+      </BaseSelect>
 
-        {error && <FormHelperText>{error}</FormHelperText>}
-      </FormControl>
-    </Box>
+      {error && <FormHelperText>{error}</FormHelperText>}
+    </FormControl>
   );
 };

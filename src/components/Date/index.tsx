@@ -49,32 +49,29 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={brLocale}>
-      <Box ml={1} mr={1} p={1} style={{ width: '100%' }}>
-        <FormControl error={!!error} fullWidth={fullWidth}>
-          <KeyboardDatePicker
-            name={fieldName}
-            id={fieldName}
-            value={date}
-            error={!!error}
-            onChange={value => setDate(value)}
-            helperText={error}
-            inputRef={inputRef}
-            defaultValue={defaultValue}
-            label={`${title} ${required ? '*' : ''}`}
-            openTo="year"
-            format="dd/MM/yyyy"
-            disabled={!!disabled}
-            disableFuture={!!disableFuture}
-            minDateMessage="Data menor que a data mínima"
-            invalidDateMessage="Formato da data é inválido"
-            maxDateMessage="Data maior que o permitido"
-            inputVariant={variant}
-            {...rest}
-          />
+      <FormControl error={!!error} fullWidth={fullWidth}>
+        <KeyboardDatePicker
+          name={fieldName}
+          value={date}
+          error={!!error}
+          onChange={value => setDate(value)}
+          helperText={error}
+          inputRef={inputRef}
+          defaultValue={defaultValue}
+          label={`${title} ${required ? '*' : ''}`}
+          openTo="year"
+          format="dd/MM/yyyy"
+          disabled={!!disabled}
+          disableFuture={!!disableFuture}
+          minDateMessage="Data menor que a data mínima"
+          invalidDateMessage="Formato da data é inválido"
+          maxDateMessage="Data maior que o permitido"
+          inputVariant={variant}
+          {...rest}
+        />
 
-          {error && <FormHelperText>{error}</FormHelperText>}
-        </FormControl>
-      </Box>
+        {error && <FormHelperText>{error}</FormHelperText>}
+      </FormControl>
     </MuiPickersUtilsProvider>
   );
 };

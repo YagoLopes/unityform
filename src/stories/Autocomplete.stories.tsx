@@ -4,13 +4,14 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Autocomplete } from '../components';
 import { IAutocompleteProps } from '../components/Autocomplete';
+import { TextFieldProps } from '@material-ui/core';
 
 export default {
   title: 'Example/Autocomplete',
   component: Autocomplete,
 } as Meta;
 
-const Template: Story<IAutocompleteProps> = args => (
+const Template: Story<IAutocompleteProps & TextFieldProps> = args => (
   <Autocomplete fullWidth {...args} />
 );
 
@@ -20,8 +21,9 @@ Default.args = {
   title: 'Example Autocomplete',
   name: 'name',
   options: [
-    { label: 'A', value: 'a' },
+    { label: 'A', value: 1 },
     { label: 'B', value: 'b' },
+    { label: 'C', value: true },
   ],
   variant: 'outlined',
   autoFocus: true,

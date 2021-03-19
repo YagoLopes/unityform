@@ -37,24 +37,21 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
-      <FormControl error={!!error} fullWidth={fullWidth}>
-        <FormControlLabel
-          control={
-            <Material
-              name={fieldName}
-              id={fieldName}
-              value={checked}
-              onChange={() => setChecked(prevState => !prevState)}
-              inputRef={inputRef}
-              defaultValue={defaultValue}
-              {...rest}
-            />
-          }
-          label={`${title} ${required ? '*' : ''}`}
-        />
-        {error && <FormHelperText>{error}</FormHelperText>}
-      </FormControl>
-    </Box>
+    <FormControl error={!!error} fullWidth={fullWidth}>
+      <FormControlLabel
+        control={
+          <Material
+            name={fieldName}
+            value={checked}
+            onChange={() => setChecked(prevState => !prevState)}
+            inputRef={inputRef}
+            defaultValue={defaultValue}
+            {...rest}
+          />
+        }
+        label={`${title} ${required ? '*' : ''}`}
+      />
+      {error && <FormHelperText>{error}</FormHelperText>}
+    </FormControl>
   );
 };

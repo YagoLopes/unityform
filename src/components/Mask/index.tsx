@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import InputMask, { Props } from 'react-input-mask';
 
 import {
-  Box,
   FormControl,
   FormHelperText,
   TextField as Material,
@@ -38,26 +37,23 @@ export const Mask: React.FC<IMaskProps & TextFieldProps> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
-      <FormControl error={!!error} fullWidth={fullWidth}>
-        <InputMask mask={mask} defaultValue={defaultValue} disabled={disabled}>
-          {(inputProps: React.Component<Props>) => (
-            <Material
-              InputLabelProps={{ shrink: true }}
-              label={`${title}${required ? '*' : ''}`}
-              name={fieldName}
-              id={fieldName}
-              error={!!error}
-              inputRef={inputRef}
-              disabled={disabled}
-              variant={variant}
-              {...rest}
-              {...inputProps}
-            />
-          )}
-        </InputMask>
-        {error && <FormHelperText>{error}</FormHelperText>}
-      </FormControl>
-    </Box>
+    <FormControl error={!!error} fullWidth={fullWidth}>
+      <InputMask mask={mask} defaultValue={defaultValue} disabled={disabled}>
+        {(inputProps: React.Component<Props>) => (
+          <Material
+            InputLabelProps={{ shrink: true }}
+            label={`${title}${required ? '*' : ''}`}
+            name={fieldName}
+            error={!!error}
+            inputRef={inputRef}
+            disabled={disabled}
+            variant={variant}
+            {...rest}
+            {...inputProps}
+          />
+        )}
+      </InputMask>
+      {error && <FormHelperText>{error}</FormHelperText>}
+    </FormControl>
   );
 };

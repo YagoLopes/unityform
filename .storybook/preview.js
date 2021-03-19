@@ -1,9 +1,10 @@
 import React from 'react';
-import { Form } from '../src/components';
+import Provider from './Provider';
+
 export const decorators = [
   Story => (
-    <Form>
+    <Provider>
       <Story />
-    </Form>
+    </Provider>
   ),
 ];

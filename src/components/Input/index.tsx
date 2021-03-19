@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
 import {
-  Box,
   FormControl,
   FormHelperText,
   TextField as Material,
@@ -34,22 +33,19 @@ export const Input: React.FC<IInputProps & TextFieldProps> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
-      <FormControl error={!!error} fullWidth={fullWidth}>
-        <Material
-          InputLabelProps={{ shrink: true }}
-          label={`${title}${required ? '*' : ''}`}
-          name={fieldName}
-          id={fieldName}
-          error={!!error}
-          variant={variant}
-          inputRef={inputRef}
-          defaultValue={defaultValue}
-          {...rest}
-        />
+    <FormControl error={!!error} fullWidth={fullWidth}>
+      <Material
+        InputLabelProps={{ shrink: true }}
+        label={`${title}${required ? '*' : ''}`}
+        name={fieldName}
+        error={!!error}
+        variant={variant}
+        inputRef={inputRef}
+        defaultValue={defaultValue}
+        {...rest}
+      />
 
-        {error && <FormHelperText>{error}</FormHelperText>}
-      </FormControl>
-    </Box>
+      {error && <FormHelperText>{error}</FormHelperText>}
+    </FormControl>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import {
-  Box,
   FormControl,
   FormHelperText,
   TextField,
@@ -64,49 +63,45 @@ export const AutocompleteAsync: React.FC<IAutocompletePropsAsync> = ({
   }, [open]);
 
   return (
-    <Box mx={1} p={1} width="100%" whiteSpace="nowrap" overflow="hidden">
-      <FormControl error={!!error} fullWidth={fullWidth}>
-        <Material
-          open={open}
-          onOpen={() => {
-            setOpen(true);
-          }}
-          onClose={() => {
-            setOpen(false);
-          }}
-          options={options}
-          loading={loading}
-          getOptionSelected={(option, value) => option.label === value.label}
-          getOptionLabel={option => option.label}
-          fullWidth={fullWidth}
-          renderInput={params => (
-            <TextField
-              {...params}
-              {...rest}
-              label={`${title} ${required ? '*' : ''}`}
-              // InputLabelProps={{ shrink: true }}
-              name={fieldName}
-              // id={fieldName}
-              error={!!error}
-              inputRef={inputRef}
-              onChange={e => handleChange(e.target.value)}
-              InputProps={{
-                ...params.InputProps,
-                endAdornment: (
-                  <>
-                    {loading ? (
-                      <CircularProgress color="inherit" size={20} />
-                    ) : null}
-                    {params.InputProps.endAdornment}
-                  </>
-                ),
-              }}
-            />
-          )}
-        />
+    <FormControl error={!!error} fullWidth={fullWidth}>
+      <Material
+        open={open}
+        onOpen={() => {
+          setOpen(true);
+        }}
+        onClose={() => {
+          setOpen(false);
+        }}
+        options={options}
+        loading={loading}
+        getOptionSelected={(option, value) => option.label === value.label}
+        getOptionLabel={option => option.label}
+        fullWidth={fullWidth}
+        renderInput={params => (
+          <TextField
+            {...params}
+            {...rest}
+            label={`${title} ${required ? '*' : ''}`}
+            name={fieldName}
+            error={!!error}
+            inputRef={inputRef}
+            onChange={e => handleChange(e.target.value)}
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <>
+                  {loading ? (
+                    <CircularProgress color="inherit" size={20} />
+                  ) : null}
+                  {params.InputProps.endAdornment}
+                </>
+              ),
+            }}
+          />
+        )}
+      />
 
-        {error && <FormHelperText>{error}</FormHelperText>}
-      </FormControl>
-    </Box>
+      {error && <FormHelperText>{error}</FormHelperText>}
+    </FormControl>
   );
 };
