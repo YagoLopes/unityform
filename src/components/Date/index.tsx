@@ -19,7 +19,6 @@ export interface IDatePickerProps {
   required?: boolean;
   disabled?: boolean;
   disableFuture?: boolean;
-  defaultValue?: Date;
   value?: MaterialUiPickersDate;
   variant?: 'standard' | 'filled' | 'outlined';
 }
@@ -31,12 +30,11 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
   required,
   disabled,
   disableFuture,
-  defaultValue,
   variant,
   ...rest
 }) => {
   const inputRef = useRef(null);
-  const { fieldName, registerField, error } = useField(name);
+  const { fieldName, registerField, error, defaultValue } = useField(name);
   const [date, setDate] = useState(defaultValue || null);
 
   useEffect(() => {
@@ -44,7 +42,8 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
       name: fieldName,
       ref: inputRef,
       getValue: ref => {
-        const date = stringToDate(ref.current.value, 'dd/MM/yyyy', '/');
+        const value = ref.current.value;
+        const date = stringToDate(value, 'dd/MM/yyyy', '/');
         return date;
       },
       setValue: (ref, value) => {

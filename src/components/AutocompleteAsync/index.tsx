@@ -36,7 +36,7 @@ export const AutocompleteAsync: React.FC<IAutocompletePropsAsync> = ({
   const loading = open && options.length === 0;
 
   const inputRef = useRef(null);
-  const { fieldName, registerField, error } = useField(name);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
   const [time, setTime] = useState<unknown>();
 
   useEffect(() => {
@@ -74,6 +74,7 @@ export const AutocompleteAsync: React.FC<IAutocompletePropsAsync> = ({
         }}
         options={options}
         loading={loading}
+        defaultValue={defaultValue}
         getOptionSelected={(option, value) => option.label === value.label}
         getOptionLabel={option => option.label}
         fullWidth={fullWidth}
