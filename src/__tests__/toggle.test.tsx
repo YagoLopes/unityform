@@ -27,7 +27,7 @@ describe('Toggle', () => {
     );
 
     expect(container.querySelector('input[name=name]')).toHaveAttribute(
-      'value',
+      'checked',
       'true',
     );
   });

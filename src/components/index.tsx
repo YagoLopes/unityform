@@ -1,5 +1,5 @@
 export { Form } from '@unform/web';
-export { Scope, FormHandles } from '@unform/core';
+export { Scope } from '@unform/core';
 export { Input } from './Input';
 export { DatePicker } from './Date';
 export { Mask } from './Mask';

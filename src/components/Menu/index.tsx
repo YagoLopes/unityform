@@ -1,8 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { MenuItem, Menu as Material, Button } from '@material-ui/core';
+import {
+  MenuItem,
+  Menu as Material,
+  Button,
+  IconButton,
+  Tooltip,
+  SvgIconTypeMap,
+} from '@material-ui/core';
 
 import { useField } from '@unform/core';
+import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 
 interface IOption {
   label: string;
@@ -12,6 +20,8 @@ interface IOption {
 export interface IMenuProps {
   name: string;
   title?: string;
+  Icon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
+  tooltip?: string;
   options: IOption[];
   onSelect?: Function;
 }
@@ -20,18 +30,24 @@ export const Menu: React.FC<IMenuProps> = ({
   name,
   title,
   options,
+  tooltip = '',
+  Icon,
   onSelect,
 }) => {
   const inputRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [option, setOption] = useState<string | undefined>();
 
-  const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = async (value: string | undefined) => {
+  const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSelect = async (value: string | undefined) => {
+    handleClose();
     setOption(value);
     if (onSelect) {
       //A ideia e usar esse callback junto com o `formRef.current.submitForm();`
@@ -52,15 +68,28 @@ export const Menu: React.FC<IMenuProps> = ({
 
   return (
     <>
-      <Button onClick={toggle}>{title}</Button>
+      {Icon ? (
+        <Tooltip title={tooltip} placement="top-end">
+          <IconButton
+            color="primary"
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <Icon />
+          </IconButton>
+        </Tooltip>
+      ) : (
+        <Button onClick={handleClick}>{title}</Button>
+      )}
       <Material
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={toggle}
+        onClose={handleClose}
       >
         {options.map(opt => (
-          <MenuItem key={opt.value} onClick={() => handleClose(opt.value)}>
+          <MenuItem key={opt.value} onClick={() => handleSelect(opt.value)}>
             {opt.label}
           </MenuItem>
         ))}
