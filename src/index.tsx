@@ -5,7 +5,6 @@ export {
   DatePicker,
   Input,
   Form,
-  FormHandles,
   Mask,
   Scope,
   Select,
