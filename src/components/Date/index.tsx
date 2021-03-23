@@ -42,7 +42,10 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
       name: fieldName,
       ref: inputRef,
       getValue: ref => {
-        const value = ref.current.value;
+        const value = ref.current.value || null;
+        if (!value) {
+          return null;
+        }
         const date = stringToDate(value, 'dd/MM/yyyy', '/');
         return date;
       },
@@ -65,7 +68,6 @@ export const DatePicker: React.FC<IDatePickerProps> = ({
           onChange={value => setDate(value)}
           helperText={error}
           inputRef={inputRef}
-          defaultValue={defaultValue}
           label={`${title} ${required ? '*' : ''}`}
           openTo="year"
           format="dd/MM/yyyy"

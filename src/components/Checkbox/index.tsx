@@ -41,7 +41,7 @@ export const Checkbox: React.FC<ICheckboxProps> = ({
           <Material
             name={fieldName}
             inputRef={inputRef}
-            defaultValue={defaultValue}
+            checked={defaultValue}
             {...rest}
           />
         }

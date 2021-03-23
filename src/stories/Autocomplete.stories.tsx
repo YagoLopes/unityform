@@ -1,5 +1,4 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Autocomplete } from '../components';
@@ -19,7 +18,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   title: 'Example Autocomplete',
-  name: 'name',
+  name: 'autocomplete',
   options: [
     { label: 'A', value: 1 },
     { label: 'B', value: 'b' },

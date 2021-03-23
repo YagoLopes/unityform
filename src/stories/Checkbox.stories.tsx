@@ -1,5 +1,4 @@
 import React from 'react';
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { Checkbox } from '../components';
@@ -16,7 +15,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   title: 'Example Checkbox',
-  name: 'name',
+  name: 'checkbox',
   variant: 'outlined',
   autoFocus: true,
   fullWidth: true,

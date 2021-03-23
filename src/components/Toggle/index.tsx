@@ -41,7 +41,7 @@ export const Toggle: React.FC<IToggleProps> = ({
           <Material
             name={fieldName}
             inputRef={inputRef}
-            defaultValue={defaultValue}
+            checked={defaultValue}
             {...rest}
           />
         }

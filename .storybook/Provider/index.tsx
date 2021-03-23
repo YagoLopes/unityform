@@ -21,7 +21,10 @@ const Provider: React.FC = ({ children }) => {
         <Grid item xs={12}>
           <Card>
             <CardContent>
-              <Form onSubmit={onSubmit}>
+              <Form
+                onSubmit={onSubmit}
+                initialData={{ checkbox: true, toggle: true }}
+              >
                 <Grid
                   container
                   justify="center"
