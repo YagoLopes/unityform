@@ -6,77 +6,72 @@ import { FormControl } from '@material-ui/core';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
+  KeyboardDatePickerProps,
 } from '@material-ui/pickers';
 
 import DateFnsUtils from '@date-io/date-fns';
 import { useField } from '@unform/core';
-import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-import { stringToDate } from '../../utils/date';
-export interface IDatePickerProps {
+
+export type IDatePickerProps = Omit<
+  KeyboardDatePickerProps,
+  'onChange' | 'value'
+> & {
   name: string;
   fullWidth?: boolean;
   title?: string;
   required?: boolean;
-  disabled?: boolean;
-  disableFuture?: boolean;
-  value?: MaterialUiPickersDate;
   variant?: 'standard' | 'filled' | 'outlined';
-}
+};
 
 export const DatePicker: React.FC<IDatePickerProps> = ({
   name,
   fullWidth,
   title,
   required,
-  disabled,
-  disableFuture,
   variant,
   ...rest
 }) => {
   const inputRef = useRef(null);
   const { fieldName, registerField, error, defaultValue } = useField(name);
-  const [date, setDate] = useState(defaultValue || null);
+  const [dateValue, setDateValue] = useState(defaultValue || null);
 
+  /* eslint-disable no-unused-vars */
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef,
       getValue: ref => {
-        const value = ref.current.value || null;
-        if (!value) {
-          return null;
-        }
-        const date = stringToDate(value, 'dd/MM/yyyy', '/');
-        return date;
+        return dateValue || undefined;
       },
       setValue: (ref, value) => {
-        ref.current.value = value;
+        setDateValue(value);
       },
       clearValue: ref => {
-        ref.current.value = '';
+        setDateValue(null);
       },
     });
-  }, [fieldName, registerField]);
+  }, [fieldName, registerField, dateValue]);
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={brLocale}>
       <FormControl error={!!error} fullWidth={fullWidth}>
         <KeyboardDatePicker
+          id={fieldName}
           name={fieldName}
-          value={date}
+          value={dateValue}
+          onChange={date => setDateValue(date || null)}
           error={!!error}
-          onChange={value => setDate(value)}
           helperText={error}
           inputRef={inputRef}
           label={`${title} ${required ? '*' : ''}`}
           openTo="year"
           format="dd/MM/yyyy"
-          disabled={!!disabled}
-          disableFuture={!!disableFuture}
           minDateMessage="Data menor que a data mínima"
-          invalidDateMessage="Formato da data é inválido"
+          invalidDateMessage="Data é inválida"
           maxDateMessage="Data maior que o permitido"
           inputVariant={variant}
+          autoOk
           {...rest}
         />
       </FormControl>
