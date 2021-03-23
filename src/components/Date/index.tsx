@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import brLocale from 'date-fns/locale/pt-BR';
 
-import { FormControl } from '@material-ui/core';
+import { FormControl, TextFieldProps } from '@material-ui/core';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
@@ -20,7 +20,7 @@ export type IDatePickerProps = Omit<
   fullWidth?: boolean;
   title?: string;
   required?: boolean;
-  variant: 'standard' | 'filled' | 'outlined' | undefined;
+  variant: TextFieldProps['variant'];
 };
 
 export const DatePicker: React.FC<IDatePickerProps> = ({
