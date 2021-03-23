@@ -2,26 +2,26 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import brLocale from 'date-fns/locale/pt-BR';
 
-import { FormControl, TextFieldProps } from '@material-ui/core';
+import { FormControl } from '@material-ui/core';
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
-  KeyboardDatePickerProps,
 } from '@material-ui/pickers';
 
 import DateFnsUtils from '@date-io/date-fns';
 import { useField } from '@unform/core';
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
-export type IDatePickerProps = Omit<
-  KeyboardDatePickerProps,
-  'onChange' | 'value'
-> & {
+export interface IDatePickerProps {
   name: string;
   fullWidth?: boolean;
   title?: string;
   required?: boolean;
-  variant: TextFieldProps['variant'];
-};
+  disabled?: boolean;
+  disableFuture?: boolean;
+  value?: MaterialUiPickersDate;
+  variant?: 'standard' | 'filled' | 'outlined';
+}
 
 export const DatePicker: React.FC<IDatePickerProps> = ({
   name,
