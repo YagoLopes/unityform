@@ -20,7 +20,7 @@ export type IDatePickerProps = Omit<
   fullWidth?: boolean;
   title?: string;
   required?: boolean;
-  variant?: 'standard' | 'filled' | 'outlined';
+  variant: 'standard' | 'filled' | 'outlined' | undefined;
 };
 
 export const DatePicker: React.FC<IDatePickerProps> = ({
